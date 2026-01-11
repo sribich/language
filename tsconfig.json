@@ -1,0 +1,6 @@
+{
+  "extends": "@sribich/config-typescript",
+  "compilerOptions": {},
+  "include": [],
+  "exclude": ["node_modules"]
+}

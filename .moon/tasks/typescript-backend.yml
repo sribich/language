@@ -1,0 +1,40 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/tasks.json
+fileGroups:
+  typescript_sources:
+    - src/**/*.ts
+    - src/**/*.tsx
+    - package.json
+  typescript_tests:
+    - benches/**/*
+    - tests/**/*
+
+tasks:
+  format:
+    command: pnpm biome format --write .
+
+  dev:
+    command: tsbuild dev
+    deps:
+      - tsbuild:build
+      # - ^:dev
+    local: true
+
+  profile_typescript:
+    deps:
+      - profile_typescript_diagnostics
+      - profile_typescript_trace
+  profile_typescript_diagnostics:
+    command: tsc --extendedDiagnostics --noEmit
+  profile_typescript_trace:
+    deps:
+      - profile_typescript_trace_generate
+      - profile_typescript_trace_check
+    options:
+      runDepsInParallel: false
+  profile_typescript_trace_generate:
+    command: tsc --generateTrace trace --noEmit
+  profile_typescript_trace_check:
+    command: analyze-trace
+
+  test:
+    command: vitest

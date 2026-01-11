@@ -1,0 +1,85 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/project.json
+language: "unknown"
+
+id: root
+
+env:
+  CARGO_TERM_COLOR: "always"
+
+workspace:
+  inheritedTasks:
+    include: []
+
+fileGroups:
+  rust_sources:
+    - crates/*/src/**/*
+    - crates/*/Cargo.toml
+    - Cargo.toml
+  rust_tests:
+    - crates/*/benches/**/*
+    - crates/*/tests/**/*
+  typescript_sources:
+    - app/**/*.{js,jsx,ts,tsx}
+    - lib/typescript/**/*.{js,jsx,ts,tsx}
+    - package.json
+  typescript_tests:
+    - benches/**/*
+    - tests/**/*
+
+tasks:
+  build:
+    command: noop
+    deps:
+      - build_rust
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+  build_rust:
+    command: cargo build
+    inputs:
+      - "@globs(rust_sources)"
+
+  test:
+    command: noop
+    deps:
+      - test_rust
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+  test_rust:
+    command: cargo test --workspace
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+
+  lint:
+    command: noop
+    deps:
+      - lint_rust_check
+      - lint_rust_clippy
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+  lint_rust_check:
+    command: cargo check --workspace
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+  lint_rust_clippy:
+    command: cargo clippy --workspace
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+
+  format:
+    command: noop
+    deps:
+      - format_rust
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+  format_rust:
+    command: cargo fmt --all --check
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"

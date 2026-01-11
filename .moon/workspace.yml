@@ -1,0 +1,23 @@
+$schema: "https://moonrepo.dev/schemas/workspace.json"
+
+projects:
+  - "."
+  - "app/*"
+  - "lib/*/*"
+  - "project/*/bin/*"
+  - "project/*/lib/*/*"
+
+telemetry: false
+
+vcs:
+  manager: "git"
+  defaultBranch: "main"
+  hooks: {}
+  hookFormat: "bash"
+  syncHooks: true
+
+versionConstraint: ">=1.20.0"
+
+generator:
+  templates:
+    - "./templates"

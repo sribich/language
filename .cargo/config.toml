@@ -1,0 +1,18 @@
+[unstable]
+codegen-backend = true
+feature-unification = true
+
+[resolver]
+feature-unification = "workspace"
+
+[profile.dev]
+codegen-backend = "cranelift"
+
+[target.'cfg(target_os = "linux")']
+rustflags = [
+    "-Clink-arg=-fuse-ld=mold",
+    "-Zshare-generics",
+    "-Zthreads=32",
+    "-Zproc-macro-backtrace",
+    "-Zcrate-attr=feature(non_exhaustive_omitted_patterns_lint)", # https://github.com/rust-lang/lang-team/issues/112
+]

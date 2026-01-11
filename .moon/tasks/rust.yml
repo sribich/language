@@ -1,0 +1,45 @@
+fileGroups:
+  rust_sources:
+    - src/**/*.rs
+    - Cargo.toml
+  rust_tests:
+    - benches/**/*
+    - tests/**/*
+tasks:
+  clippy:
+    command: cargo clippy
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+
+  test:
+    command: cargo nextest run
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+
+  doctest:
+    command: cargo test --doc
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+
+  update_snapshots:
+    command: cargo test
+    inputs:
+      - "@globs(rust_sources)"
+      - "@globs(rust_tests)"
+    env:
+      UPDATE_EXPECT: "1"
+
+  geiger:
+    command: cargo geiger
+
+  hack:
+    command: cargo hack check --feature-powerset --no-dev-deps --depth 3
+
+  expand:
+    command: cargo expand
+
+  bacon:
+    command: bacon check
