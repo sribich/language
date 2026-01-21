@@ -2133,7 +2133,9 @@ dependencies = [
  "itertools 0.14.0",
  "quick-xml",
  "railgun",
+ "rayon",
  "serde",
+ "serde-util",
  "typed-arena",
  "unicode-normalization",
  "url",
@@ -5905,6 +5907,7 @@ dependencies = [
  "convert_case 0.8.0",
  "darling 0.23.0",
  "macro_util",
+ "proc-macro-crate",
  "proc-macro-error2",
  "proc-macro2",
  "quote",
@@ -6677,6 +6680,14 @@ dependencies = [
  "serde",
  "serde_core",
  "typeid",
+]
+
+[[package]]
+name = "serde-util"
+version = "0.0.0"
+dependencies = [
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
