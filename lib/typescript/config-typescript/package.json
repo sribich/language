@@ -1,0 +1,16 @@
+{
+  "name": "@sribich/config-typescript",
+  "version": "0.0.0",
+  "exports": {
+    ".": "./src/base.json",
+    "./bundler/node24/app": "./src/bundler/node22/app.json",
+    "./bundler/node24/lib": "./src/bundler/node22/lib.json",
+    "./bundler/web/app": "./src/bundler/web/app.json",
+    "./bundler/web/lib": "./src/bundler/web/lib.json",
+    "./tsc/node24/app": "./src/tsc/node24/app.json",
+    "./tsc/node24/lib": "./src/tsc/node24/lib.json",
+    "./tsc/web/app": "./src/tsc/web/app.json",
+    "./tsc/web/lib": "./src/tsc/web/lib.json"
+  },
+  "files": ["src"]
+}

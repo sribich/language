@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compileOnSave": false,
+  "compilerOptions": {
+    //==============
+    // Modules
+    //==============
+    // "baseUrl": ".",
+    // "rootDir": ".",
+    "paths": {},
+    "resolveJsonModule": true,
+    //==============
+    // Type Checking
+    //==============
+    "strict": true,
+    "allowUnreachableCode": false, // Should be handled by a linter
+    "allowUnusedLabels": false,
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false, // Should be handled by a linter
+    "noUnusedParameters": false, // Should be handled by a linter
+
+    // "isolatedDeclarations": true,
+    //=====
+    // Emit
+    //=====
+    "declaration": false,
+    "importHelpers": true,
+    "noEmitOnError": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "removeComments": true,
+    "sourceMap": false,
+    "useDefineForClassFields": true,
+    "erasableSyntaxOnly": true,
+    //===================
+    // JavaScript Support
+    //===================
+    "allowJs": true,
+    "checkJs": true,
+    //====================
+    // Interop Constraints
+    //====================
+    "skipLibCheck": true,
+    // "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    //=========================
+    // Language and Environment
+    //=========================
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": false
+  }
+}
