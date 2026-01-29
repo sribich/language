@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://moonrepo.dev/schemas/project.json
+language: typescript
+
+tasks:
+  test:
+    command: vitest
+
+  lint:
+    command: biome lint && eslint

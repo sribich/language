@@ -1,0 +1,9 @@
+{
+  "extends": ["@sribich/config-typescript/bundler/web/lib"],
+  "compilerOptions": {
+    "paths": {
+      "@/preview": ["../../../bin/fude-storybook/.storybook/preview.tsx"]
+    }
+  },
+  "include": ["src/**/*"]
+}
